@@ -34,4 +34,3 @@ then, we need to authorize the ngrok
 8. Run the **app.py** at vscode, run the **ngrok http 5000** at the ngrok terminal
 9. Eventually, we can check MySQL workbench
 
-The final result:  https://3f3d-140-122-91-133.ngrok-free.app
