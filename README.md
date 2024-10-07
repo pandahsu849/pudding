@@ -33,4 +33,12 @@ then, we need to authorize the ngrok
 7. At the ngrok terminal, we run the **ngrok config add-authtoken <token>**
 8. Run the **app.py** at vscode, run the **ngrok http 5000** at the ngrok terminal
 9. Eventually, we can check MySQL workbench
-
+---
+10/07 We add the new function: Delete
+The step to the update is the same as before
+And I renew the UI at index.html
+1. Change the background color： **background-color: #f5f5f5（light gray background）**
+2. Title font and style： Change to the **'Segoe UI', Tahoma, Geneva, Verdana, sans-serif** to make it more clear and modern
+3. Change the input box style： add the round corner **border-radius: 25px** and new colors **border: 2px solid #ced4da**
+4. Buttom style: round corner、new colors and transition **transition: background-color 0.3s ease**, the button fades to a darker color when the user hovers it
+5. Button position and form separation: center alignment **div class="text-center"**
