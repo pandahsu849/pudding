@@ -47,3 +47,18 @@
 6. **Button Alignment and Form Separation**: Centered buttons using `<div class="text-center">` to improve layout and visual appeal.
 
 ---
+
+## 📅 10/21 Homework: Preparing the NoSQL database environment (Flask + MongoDB)
+
+1. Download the MongoDB
+2. Create the compass, add new connection
+3. Download the sample code 
+4. Create the virtual environment
+   - (1) cd .\noSQL\
+   - (2) python -m venv .vene
+   - (3) Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+   - (4) .\.vene\Scripts\Activate.ps1
+5. In the virtual environment, we install the flask connect to MangoDB `pip install Flask pymongo`
+6. Run the `noSQL.py` to see whether you have connected to MangoDB
+
+---
