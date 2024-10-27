@@ -4,9 +4,9 @@
 🐶 **Name**: 徐鉉秝
 ☘ **Department**: 科技115
 
-HW1:[Video](https://youtu.be/JWTnehkAYF8)
+HW1:[Video](https://youtu.be/JWTnehkAYF8) [File](HW1)
 
-HW2:[Video](https://youtu.be/2454_Wr8hOc)
+HW2:[Video](https://youtu.be/2454_Wr8hOc) [File](HW2)
 
 ---
 
