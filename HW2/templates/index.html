@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        /* Custom CSS for cleaner interface */
+        .section-title {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        .table {
+            margin-top: 1rem;
+            background-color: #f9f9f9;
+        }
+        .btn-submit {
+            margin-top: 1rem;
+        }
+        .delete-selected {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <h1 class="mt-4 mb-4 text-center">Add New Entries</h1>
+        
+        <!-- Forms Section -->
+        <div class="row">
+            <!-- Department Form -->
+            <div class="col-md-4">
+                <h2 class="section-title">Department</h2>
+                <form action="{{ url_for('create_bp.add_department') }}" method="POST">
+                    <input type="text" class="form-control" name="department_name" placeholder="Department name" required>
+                    <input type="number" class="form-control mt-2" name="project_id" placeholder="Project ID" required>
+                    <button type="submit" class="btn btn-primary btn-submit">Add Department</button>
+                </form>
+            </div>
+
+            <!-- Employee Form -->
+            <div class="col-md-4">
+                <h2 class="section-title">Employee</h2>
+                <form action="{{ url_for('create_bp.add_employee') }}" method="POST">
+                    <input type="text" class="form-control" name="first_name" placeholder="First name" required>
+                    <input type="text" class="form-control mt-2" name="last_name" placeholder="Last name" required>
+                    <input type="number" class="form-control mt-2" name="department_id" placeholder="Department ID" required>
+                    <button type="submit" class="btn btn-primary btn-submit">Add Employee</button>
+                </form>
+            </div>
+
+            <!-- Project Form -->
+            <div class="col-md-4">
+                <h2 class="section-title">Project</h2>
+                <form action="{{ url_for('create_bp.add_project') }}" method="POST">
+                    <input type="text" class="form-control" name="project_name" placeholder="Project name" required>
+                    <input type="text" class="form-control mt-2" name="project_description" placeholder="Project description" required>
+                    <button type="submit" class="btn btn-primary btn-submit">Add Project</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Existing Entries Tables -->
+        
+        <!-- Departments Table -->
+        <h2 class="section-title">Departments</h2>
+        <form action="{{ url_for('delete_bp.delete_departments') }}" method="POST">
+            <button type="submit" class="btn btn-danger delete-selected">Delete Selected</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Dept ID</th>
+                        <th>Dept Name</th>
+                        <th>Proj ID</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for department in departments %}
+                    <tr>
+                        <td><input type="checkbox" name="department_ids" value="{{ department.department_id }}"></td>
+                        <td>{{ department.department_id }}</td>
+                        <td><input type="text" name="department_name_{{ department.department_id }}" class="form-control" value="{{ department.department_name }}" required></td>
+                        <td><input type="number" name="project_id_{{ department.department_id }}" class="form-control" value="{{ department.project_id }}" required></td>
+                        <td>
+                            <button type="submit" formaction="{{ url_for('update_bp.update_department', department_id=department.department_id) }}" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+
+        <!-- Employees Table -->
+        <h2 class="section-title">Employees</h2>
+        <form action="{{ url_for('delete_bp.delete_employees') }}" method="POST">
+            <button type="submit" class="btn btn-danger delete-selected">Delete Selected</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Emp ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Dept ID</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td><input type="checkbox" name="employee_ids" value="{{ employee.employee_id }}"></td>
+                        <td>{{ employee.employee_id }}</td>
+                        <td><input type="text" name="first_name_{{ employee.employee_id }}" class="form-control" value="{{ employee.first_name }}" required></td>
+                        <td><input type="text" name="last_name_{{ employee.employee_id }}" class="form-control" value="{{ employee.last_name }}" required></td>
+                        <td><input type="number" name="department_id_{{ employee.employee_id }}" class="form-control" value="{{ employee.department_id }}" required></td>
+                        <td>
+                            <button type="submit" formaction="{{ url_for('update_bp.update_employee', employee_id=employee.employee_id) }}" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+
+        <!-- Projects Table -->
+        <h2 class="section-title">Projects</h2>
+        <form action="{{ url_for('delete_bp.delete_projects') }}" method="POST">
+            <button type="submit" class="btn btn-danger delete-selected">Delete Selected</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Proj ID</th>
+                        <th>Proj Name</th>
+                        <th>Description</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td><input type="checkbox" name="project_ids" value="{{ project.project_id }}"></td>
+                        <td>{{ project.project_id }}</td>
+                        <td><input type="text" name="project_name_{{ project.project_id }}" class="form-control" value="{{ project.project_name }}" required></td>
+                        <td><input type="text" name="project_description_{{ project.project_id }}" class="form-control" value="{{ project.project_description }}" required></td>
+                        <td>
+                            <button type="submit" formaction="{{ url_for('update_bp.update_project', project_id=project.project_id) }}" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+
+        <!-- Joined Data Table -->
+        <h2 class="section-title">Joined Data of Departments, Employees, and Projects</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Dept ID</th>
+                    <th>Dept Name</th>
+                    <th>Proj Name</th>
+                    <th>Description</th>
+                    <th>Emp ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in joined_data %}
+                <tr>
+                    <td>{{ row.department_id }}</td>
+                    <td>{{ row.department_name }}</td>
+                    <td>{{ row.project_name }}</td>
+                    <td>{{ row.project_description }}</td>
+                    <td>{{ row.employee_id }}</td>
+                    <td>{{ row.first_name }}</td>
+                    <td>{{ row.last_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap and JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn

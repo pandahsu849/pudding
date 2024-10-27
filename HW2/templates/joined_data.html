@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joined Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Joined Data of Departments, Employees, and Projects</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                    <th>Project Name</th>
+                    <th>Project Description</th>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.department_id }}</td>
+                    <td>{{ row.department_name }}</td>
+                    <td>{{ row.project_name }}</td>
+                    <td>{{ row.project_description }}</td>
+                    <td>{{ row.employee_id }}</td>
+                    <td>{{ row.first_name }}</td>
+                    <td>{{ row.last_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
