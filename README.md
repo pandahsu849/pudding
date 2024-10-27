@@ -3,8 +3,11 @@
 👩‍🏫 **Instructor**: 蔡芸琤  
 🐶 **Name**: 徐鉉秝
 ☘ **Department**: 科技115
+
 HW1:[Video](https://youtu.be/JWTnehkAYF8)
+
 HW2:[Video](https://youtu.be/2454_Wr8hOc)
+
 ---
 
 ## 📅 09/16 Homework: Creating Tables and Importing Data into MySQL
