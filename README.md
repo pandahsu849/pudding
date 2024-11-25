@@ -8,6 +8,8 @@ HW1:[Video](https://youtu.be/JWTnehkAYF8) [File](HW1)
 
 HW2:[Video](https://youtu.be/2454_Wr8hOc) [File](HW2)
 
+HW3:[Video](https://youtu.be/KxwZLNoFRcA) [File](HW3)
+
 ---
 
 ## 📅 09/16 Homework: Creating Tables and Importing Data into MySQL
