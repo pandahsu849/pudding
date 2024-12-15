@@ -12,6 +12,8 @@ HW3:[Video](https://youtu.be/KxwZLNoFRcA) [File](HW3)
 
 HW4:[Video](https://youtu.be/9rOO1kggdwg) [File](HW4)
 
+Final Project - Social Media：[Video](https://youtu.be/i_lp2h_n0fw) [File](Final_Project) [PowerPoint](https://www.canva.com/design/DAGW5YVQYYM/-LylqhnD03JtIsp0y9VDbA/edit?utm_content=DAGW5YVQYYM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ---
 
 ## 📅 09/16 Homework: Creating Tables and Importing Data into MySQL
